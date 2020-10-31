@@ -2,7 +2,7 @@ import React from "react";
 
 const OneLabel = (props) => {
   return (
-    <div className="text-type-label">
+    <div className="type-label">
       <label>{props.name}</label>
       <input type={props.intype} />
     </div>
@@ -10,10 +10,20 @@ const OneLabel = (props) => {
 };
 
 const Form = () => {
-  const textlabel = { one: "name", type: "text" };
+  const textlabel = [
+    { one: "Name", type: "text" },
+    { one: "Email", type: "email" },
+    { one: "Date", type: "date" },
+    { one: "Password", type: "password" }
+  ];
   return (
     <form className="form">
-      <OneLabel name={textlabel.one} intype={textlabel.type} />
+      {textlabel.map((l) => (
+        <OneLabel name={l.one} intype={l.type} />
+      ))}
+      <button className="submit-btn" type="submit">
+        Let's begin!
+      </button>
     </form>
   );
 };
